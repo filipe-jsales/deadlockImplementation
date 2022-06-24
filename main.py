@@ -1,4 +1,4 @@
-
+import numpy as np
 '''
     Matriz C é uma matriz de alocação  de recursos. Ou seja, o processo 1 já está de posse de 1 unidade do recurso 2, 1 unidade do recurso 3, 1  unidade do recurso 4 e 2 unidades do recurso 5, assim por diante.
 '''
@@ -35,46 +35,59 @@ a = [0, 1, 0, 2, 1]
 
 impasse = False
 
+def show_current_resources():
+    for i in range(0, len(c)):
+        print('O processo {} está de posse dos recursos {}'.format(i+1, c[i]))
+    print('')
 
-#iterate over c (resource allocation) matrix
-for i in range(0, len(c)):
-    for j in range(0, len(c)+1):
-        print("Linha {} O processo {} está de posse de {} recurso(s)".format(i+1, j,  c[i][j]))
+def show_resources_needed():
+    for i in range(0, len(r)):
+        print('O processo {} solicita os recursos {}'.format(i+1, r[i]))
+    print('')
 
-#iterate over r (resources) matrix
-for i in range(0, len(r)):
-    for j in range(0, len(r)+1):
-        print("O processo {} necessita de {} unidade(s) do recurso {}".format(j+1, r[i][j], j+1))
+def check_deadlock():
+    array_aux = []
+    array_bool = [False, False, False, False, False]
+    #while(True):
+    cont_proc =1
+    show_current_resources()
+    show_resources_needed()
 
-#iterate over e(max_actual) vector
-for i in range(0, len(e)):
-    print("A quantidade máxima de recursos para o processo {} é de {}".format(i+1, e[i]))
+    for i in range(0, len(r)):
+        array_aux = r[i].copy() #criando uma cópia da lista
 
-#iterate over available resources
-for i in range(0, len(a)):
-    print("A quantidade de recursos disponíveisdo tipo {} é de {}".format(i+1, a[i]))
+        for j in range(0, len(r)+1):
+            #if(e[j] >= c[i][j] and a[j] - r[i][j] >=0):
+            #array_aux.append(r[i][j]+a[j])
+            print('a[i]', a[j])
+            print('array aux[i] ', array_aux[j])
+            if(len(array_aux) == (len(r)+1)): #checar se os vetores têm o mesmo tamanho
+                if(a[j] >= array_aux[j]):#recursos disponíveis > recursos solicitados
+                    print("Entrou true")
+                    print('a[i]', a[j])
+                    print('array aux[i] ', array_aux[j])
+                    array_aux[j] = r[i][j]+a[j]
+                    print('NOVO VALOR ARRAY AUX', array_aux)
+                    array_bool[j] = True
+                    if (all(array_aux)):#todos processos em posse dos recursos solicitados
+                        del array_bool[:]
+                        array_bool = array_aux.copy()
+                        print('NÃO HOUVE IMPASSE NÃO HOUVE IMPASSE NÃO HOUVE IMPASSE NÃO HOUVE IMPASSE NÃO HOUVE IMPASSE NÃO HOUVE IMPASSE ')
+                else: #recursos disponiveis < recursos solicitados
+                    print('Entrou false')
+                    array_bool[j] = False
+                print(array_aux)
+                print(array_bool)
+        del array_aux[:]
 
+            #else: #solicitando mais que o disponivel
+                #j+=1
 
-#while(True):
-for i in range(0, len(c)):
-    for j in range(0, len(c)+1):
-        if(e[j] >= c[i][j] and a[j] - r[i][j] >=0):
-            print('e[j] = ', e[j])
-            print('a[j] = ', a[j])
-            #caso a quantidade de recurso seja menor que a maxima permitida e
-            #eu solicite a quantidade de recurso disponivel dentro do range
-            print("c[i][j]: ", c[i][j])
-            print("r[i][j]: ", r[i][j])
-            c[i][j] += r[i][j]
-            print("[NOVO]Linha {} O processo {} está de posse de {} recurso(s)".format(i+1, j+1,  c[i][j]))
-        else:
-            print("[ESTADO BLOQUEADO]Linha {} O Processo {} está de posse de {} recurso(s), solicita {} Recurso(s). Recursos disponíveis: {} ".format(i+1, j+1,  c[i][j], r[i][j], a[j]))
+            #print(r[j])
 
+print(check_deadlock())
 
-
-
-
-
+print(np.array([a]) >= np.array([r[0]]))
 
 #with open("sample-input.txt") as file:
 #    matriz_alocacao = file.readlines()[0].rstrip()
