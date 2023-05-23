@@ -1,3 +1,15 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+let plugins = [];
+let optimization = {};
+
+// plugins.push(new BundleAnalyzerPlugin());
+
 module.exports = {
-    publicPath: '/vue-pokedex-pinia/'
-}
+    lintOnSave: false,
+    publicPath: '/vue-pokedex',
+    configureWebpack: {
+        plugins,
+        optimization,
+    },
+};

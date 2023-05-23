@@ -1,25 +1,37 @@
 {
-  "name": "vue-pokedex-pinia",
-  "version": "0.1.0",
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "A Vue.js project",
+  "author": "shadforth <jacqueline.shadforth@gmail.com>",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "pinia": "^2.0.0-rc.6",
-    "vue": "^3.0.0"
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.7.0",
+    "vue": "^2.6.11",
+    "vue-audio": "0.0.12"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-plugin-unit-jest": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "@vue/eslint-config-prettier": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.32",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^7.0.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^3.8.0"
   },
   "eslintConfig": {
     "root": true,
@@ -27,17 +39,40 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
+      "plugin:vue/essential",
+      "@vue/prettier"
     ],
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not dead"
-  ]
+    "not ie <= 8"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/"
+  }
 }

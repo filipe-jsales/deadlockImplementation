@@ -1,7 +1,13 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import { createPinia } from 'pinia'
+import Vue from "vue";
+import App from "./App";
+import BootstrapVue from "bootstrap-vue";
 
-const app = createApp(App)
-app.use(createPinia())
-app.mount('#app')
+Vue.use(BootstrapVue);
+Vue.config.productionTip = false;
+
+require("./shared/pokemonTypes.scss");
+
+/* eslint-disable no-new */
+new Vue({
+  render: h => h(App),
+}).$mount("#app");
