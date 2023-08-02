@@ -31,10 +31,10 @@ const filters = [
 const allData = [
   {
     id: 1,
+    link: "https://www.avanti.studio",
     name: "Business Site",
-    link: "https://lukasdomingos.vercel.app/",
     category: ["business site"],
-    image: "images/portfolio/18.svg",
+    image: "images/portfolio/avanti-studio.png",
   },
   {
     id: 2,
@@ -66,73 +66,24 @@ const allData = [
   },
   {
     id: 6,
-    name: "Shop",
-    link: "https://shop.jorlans.com/",
-    category: ["shop"],
-    image: "images/portfolio/7.svg",
-  },
-  {
-    id: 7,
-    name: "Landing Page",
-    link: "https://projetos.jorlans.com/landing1/",
-    category: ["landing page"],
-    image: "images/portfolio/8.svg",
-  },
-  {
-    id: 8,
     name: "Landing Page",
     link: "https://projetos.jorlans.com/webera/",
     category: ["landing page"],
     image: "images/portfolio/9.svg",
   },
   {
-    id: 9,
-    name: "Landing Page",
-    link: "https://projetos.jorlans.com/portfolio",
-    category: ["landing page"],
-    image: "images/portfolio/12.svg",
-  },
-  {
-    id: 10,
-    name: "Design",
-    link: "https://www.youtube.com/watch?v=Ztc-7unmgMA&t=2s",
-    category: ["design"],
-    image: "images/portfolio/13.svg",
-  },
-  {
-    id: 11,
+    id: 7,
     name: "Blog",
     link: "https://blog.greenmainframe.com/",
     category: ["blog"],
     image: "images/portfolio/14.svg",
   },
   {
-    id: 12,
-    link: "https://projetos.jorlans.com/ilustracao/",
-    name: "Shop",
-    category: ["shop"],
-    image: "images/portfolio/2.svg",
-  },
-  {
-    id: 13,
+    id: 8,
     name: "Business Site",
     link: "https://beerwiththeboss.jorlans.com/",
     category: ["business site"],
     image: "images/portfolio/16.svg",
-  },
-  {
-    id: 14,
-    name: "Shop",
-    link: "https://projetos.jorlans.com/",
-    category: ["shop"],
-    image: "images/portfolio/3.svg",
-  },
-  {
-    id: 15,
-    link: "https://projetos.jorlans.com/ilustracao4/",
-    name: "Shop",
-    category: ["shop"],
-    image: "images/portfolio/1.svg",
   },
 ];
 
